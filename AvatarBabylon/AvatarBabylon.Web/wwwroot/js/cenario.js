@@ -6,12 +6,7 @@
     const larguraDaTextura = larguraDoChao * 500;
     const alturaDaTextura = altura * 500;
 
-    //let name = data.nome;
-    //let age = data.idade;
-    //let situation = data.situacao;
-
     const dynamicTexture = new BABYLON.DynamicTexture("DynamicTexture", { width: larguraDaTextura, height: alturaDaTextura }, scene);
-    debugger;
     const ctx = dynamicTexture.getContext();
     const tamanhoMaximo = 1; 
     ctx.font = tamanhoMaximo + "px " + fonte;
@@ -29,7 +24,6 @@
     plane.rotation.y = Math.PI;
     plane.position.y = positionY;
 
-    //Draw text
     dynamicTexture.drawText(
         "Dados do paciente",
         larguraDaTextura * 0.25,
@@ -125,126 +119,6 @@
         larguraDaTextura * 0.5,
         alturaDaTextura * 0.65,
         tamanhoFonte,
-        "#000000",
-        null,
-        true
-    );
-};
-
-const createPanelFichaMedica = async function (scene, data, positionX, positionY) {
-    //Set font type
-    var font_type = "Arial";
-
-    //Set width an height for plane
-    var planeWidth = 2;
-    var planeHeight = 2;
-
-    //Create plane
-    var plane = BABYLON.MeshBuilder.CreatePlane(
-        "plane",
-        { width: planeWidth, height: planeHeight },
-        scene
-    );
-
-    //Set width and height for dynamic texture using same multiplier
-    var DTWidth = planeWidth * 500;
-    var DTHeight = planeHeight * 500;
-
-    //Set text
-
-    let name = data.nome;
-    let age = data.idade;
-    let situation = data.situacao;
-    //Create dynamic texture
-    var dynamicTexture = new BABYLON.DynamicTexture(
-        "DynamicTexture",
-        { width: DTWidth, height: DTHeight },
-        scene
-    );
-
-    //Check width of text for given font type at any size of font
-    let ctx = dynamicTexture.getContext();
-    var size = 1; //any value will work
-    ctx.font = size + "px " + font_type;
-    var textWidth = ctx.measureText(name).width;
-
-    //Calculate ratio of text width to size of font used
-    var ratio = textWidth / size;
-
-    //set font to be actually used to write text on dynamic texture
-    var font_size = Math.floor(DTWidth / (ratio * 5)); //size of multiplier (1) can be adjusted, increase for smaller text
-    var font = font_size + "px " + font_type;
-
-    //create material
-    var mat = new BABYLON.StandardMaterial("mat", scene);
-    mat.diffuseTexture = dynamicTexture;
-
-    //apply material
-    plane.material = mat;
-    plane.position.x = positionX;
-    plane.rotation.y = Math.PI;
-    plane.position.y = positionY;
-
-    //Draw text
-    dynamicTexture.drawText(
-        "Laudo medico",
-        DTWidth * 0.3,
-        DTHeight * 0.1,
-        font,
-        "#0000ff ",
-        "#ffffff",
-        true
-    );
-    dynamicTexture.drawText(
-        "Nome:",
-        DTWidth * 0.1,
-        DTHeight * 0.2,
-        font,
-        "#000000",
-        null,
-        true
-    );
-    dynamicTexture.drawText(
-        name,
-        DTWidth * 0.5,
-        DTHeight * 0.2,
-        font,
-        "#000000",
-        null,
-        true
-    );
-    dynamicTexture.drawText(
-        "Batimentos cardíacos:",
-        DTWidth * 0.1,
-        DTHeight * 0.3,
-        font,
-        "#000000",
-        null,
-        true
-    );
-    dynamicTexture.drawText(
-        age,
-        DTWidth * 0.5,
-        DTHeight * 0.3,
-        font,
-        "#000000",
-        null,
-        true
-    );
-    dynamicTexture.drawText(
-        "Situação:",
-        DTWidth * 0.1,
-        DTHeight * 0.4,
-        font,
-        "#000000",
-        null,
-        true
-    );
-    dynamicTexture.drawText(
-        situation,
-        DTWidth * 0.5,
-        DTHeight * 0.4,
-        font,
         "#000000",
         null,
         true

@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Pagina inicial";
+}
+<style>
+    body,
+    #canvasAvatar {
+        width: 1500px !important;
+        height: 820px !important;
+    }
+</style>
+
+<canvas id="canvasAvatar"></canvas>
+
+<script defer>
+    const canvas = document.getElementById("canvasAvatar");
+    const engineBabylon = new BABYLON.Engine(canvas, true);
+
+    window.addEventListener('load', async () => {
+        await carregue_cenario_inicial();
+    });
+
+    async function carregue_cenario_inicial() {
+        const paciente = await _obtenhaPacientes();
+        if (!paciente || !paciente.length) return;
+        const cenaParaRenderizar = await crieCena(engineBabylon, paciente[0]);
+        engineBabylon.runRenderLoop(() => cenaParaRenderizar.render());
+
+        window.addEventListener("resize", function() {
+            engineBabylon.resize();
+        });
+
+        async function _obtenhaPacientes() {
+            debugger;
+            const url = 'https://localhost:7208/Paciente';
+            const resposta = await getJSON(url);
+            return resposta;
+        }
+
+        async function getJSON(url) {
+            const options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }
+
+            const response = await fetch(url, options);
+            const json = await response.json();
+            return json;
+        }
+    }
+
+</script>

@@ -1,0 +1,15 @@
+﻿version: '3.8'
+
+services:
+  babylon.web:
+    container_name: babylon-web
+    image: babylon-web
+    build:
+      context: ./AvatarBabylon/AvatarBabylon.Web
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Staging
+      - ASPNETCORE_URLS=http://+:5210
+    ports:
+      - 7040:7040
+      - 5210:5210

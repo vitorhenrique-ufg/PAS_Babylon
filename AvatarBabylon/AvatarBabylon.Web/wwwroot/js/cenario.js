@@ -43,7 +43,7 @@
         true
     );
     dynamicTexture.drawText(
-        paciente.nome,
+        paciente.Nome,
         larguraDaTextura * 0.5,
         alturaDaTextura * 0.25,
         tamanhoFonte,
@@ -52,7 +52,7 @@
         true
     );
     dynamicTexture.drawText(
-        "Data de nascimento:",
+        "Data de nascimento:    ",
         larguraDaTextura * 0.1,
         alturaDaTextura * 0.35,
         tamanhoFonte,
@@ -61,7 +61,7 @@
         true
     );
     dynamicTexture.drawText(
-        new Date(paciente.dataNascimento).convertaDateToStrDiaMesAno(),
+        "     "+ new Date(paciente.DataNascimento).convertaDateToStrDiaMesAno(),
         larguraDaTextura * 0.5,
         alturaDaTextura * 0.35,
         tamanhoFonte,
@@ -79,7 +79,7 @@
         true
     );
     dynamicTexture.drawText(
-        paciente.altura.toString().replace('.', ',') + " cm",
+        paciente.Altura.toString().replace('.', ',') + " cm",
         larguraDaTextura * 0.5,
         alturaDaTextura * 0.45,
         tamanhoFonte,
@@ -97,7 +97,7 @@
         true
     );
     dynamicTexture.drawText(
-        paciente.peso + " KG",
+        paciente.Peso + " KG",
         larguraDaTextura * 0.5,
         alturaDaTextura * 0.55,
         tamanhoFonte,
@@ -171,7 +171,7 @@ const crieAvatar = async function (scene) {
             UiPanel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
             advancedTexture.addControl(UiPanel);
 
-            const button = BABYLON.GUI.Button.CreateSimpleButton("but1", "Play Idle");
+            const button = BABYLON.GUI.Button.CreateSimpleButton("but1", "Parar");
             button.paddingTop = "10px";
             button.width = "100px";
             button.height = "50px";
@@ -182,7 +182,7 @@ const crieAvatar = async function (scene) {
             });
             UiPanel.addControl(button);
 
-            const button1 = BABYLON.GUI.Button.CreateSimpleButton("but2", "Play Walk");
+            const button1 = BABYLON.GUI.Button.CreateSimpleButton("but2", "Andar");
             button1.paddingTop = "10px";
             button1.width = "100px";
             button1.height = "50px";
@@ -192,7 +192,17 @@ const crieAvatar = async function (scene) {
                 if (walkRange) scene.beginAnimation(skeletoAvatar, walkRange.from, walkRange.to, true);
             });
             UiPanel.addControl(button1);
-            UiPanel.addControl(button1);
+
+            const button2 = BABYLON.GUI.Button.CreateSimpleButton("but2", "Editar");
+            button2.paddingTop = "10px";
+            button2.width = "100px";
+            button2.height = "50px";
+            button2.color = "white";
+            button2.background = "green";
+            button2.onPointerDownObservable.add(() => {
+                aoEditarPaciente();
+            });
+            UiPanel.addControl(button2);
 
             scene.beginAnimation(skeletoAvatar, walkRange.from, walkRange.to, true);
             engine.hideLoadingUI();

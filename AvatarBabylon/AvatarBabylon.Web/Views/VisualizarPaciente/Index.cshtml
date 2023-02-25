@@ -1,0 +1,43 @@
+﻿@using AvatarBabylon.Web.Models
+@using System.Text.Json;
+@model PacienteModel
+@{
+    ViewData["Title"] = "Visualizar avatar";
+    var paciente = JsonSerializer.Serialize<PacienteModel>(Model);
+}
+<style>
+    body,
+    #canvasAvatar {
+        width: 1900px !important;
+        height: 820px !important;
+    }
+</style>
+
+<canvas id="canvasAvatar"></canvas>
+
+<script defer>
+    const paciente = @Html.Raw(paciente);
+    const canvas = document.getElementById("canvasAvatar");
+    const engineBabylon = new BABYLON.Engine(canvas, true);
+
+    window.addEventListener('load', async () => {
+        await carregue_cenario_inicial();
+    });
+
+    async function carregue_cenario_inicial() {
+        if (!paciente) return;
+
+        const cenaParaRenderizar = await crieCena(engineBabylon, paciente);
+        engineBabylon.runRenderLoop(() => cenaParaRenderizar.render());
+
+        window.addEventListener("resize", function() {
+            engineBabylon.resize();
+        });
+    }
+
+    function aoEditarPaciente() {
+        const url = `@Url.Action("Index","EditarPaciente")?id=${paciente.Id}`;
+        window.location.href = url;
+    }
+
+</script>

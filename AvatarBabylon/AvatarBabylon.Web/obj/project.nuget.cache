@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0R38kWCh+Vf2XKpdLri0fnGgw2i5kpN5NAvQPocvlogvBK2h5Dvb9SV4JyxbLUBKgWhyluk8jnr05of50dG8Hg==",
+  "dgSpecHash": "QUF2iHH4JcC8u87y8QVAc64AV/6lzpH5nhmExAnFPtKU0Eoljjx0EooVD0fjeudshXB4pjep+2+PhWqYQZwbtw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Windows\\source\\repos\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Windows\\Desktop\\PadroesArquitetura\\PAS_Babylon\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Windows\\.nuget\\packages\\restsharp\\108.0.3\\restsharp.108.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

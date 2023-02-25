@@ -1,0 +1,50 @@
+﻿@using AvatarBabylon.Web.Models
+@model PacienteModel
+@{
+    ViewData["Title"] = "Editar paciente";
+}
+
+<input type="hidden" id="idPaciente" value="@Model.Id"/>
+<h2>Editar paciente</h2>
+
+<button class="btn btn-primary mt-3 mb-4" type="button" onclick="editarPaciente(this)">
+	Gravar
+	<i class="fas fa-save mx-1"></i>
+</button>
+
+<div class="row">
+    <div class="form-group col-xl-3">
+		<label>Nome</label>
+		<input id="nome" class="form-control" type="text" name="nome" value="@Model.Nome"/>
+	</div>
+	<div class="form-group col-xl-3">
+		<label>Data de nascimento</label>
+		<input id="dataNascimento" class="form-control" type="date" name="dataNascimento" value="@Model.DataNascimento.ToString("yyyy-MM-dd")"/>
+	</div>
+	<div class="form-group col-xl-3">
+		<label>Altura</label>
+		<input id="altura" class="form-control" type="number" name="altura" value="@Model.Altura.ToString().Replace(",", ".")"/>
+	</div>
+	<div class="form-group col-xl-3">
+		<label>Peso</label>
+		<input id="peso" class="form-control" type="number" name="peso" value="@Model.Peso"/>
+	</div>
+</div>
+
+<script defer>
+	async function editarPaciente() {
+        const optionsFetch = {
+            url: '@Url.Action("Editar", "EditarPaciente")',
+            data: {
+				Id: document.getElementById('idPaciente').value,
+                Nome: document.getElementById('nome').value,
+                DataNascimento: new Date(document.getElementById('dataNascimento').value),
+                Altura: document.getElementById('altura').value,
+                Peso: document.getElementById('peso').value
+            },
+            method: 'POST'
+        };
+        const resposta = await postJSON(optionsFetch);
+        alert('Paciente editado com sucesso');
+	}
+</script>

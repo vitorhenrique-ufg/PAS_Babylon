@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Windows\\source\\repos\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj": {}
+    "C:\\Users\\Windows\\Desktop\\PadroesArquitetura\\PAS_Babylon\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Windows\\source\\repos\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj": {
+    "C:\\Users\\Windows\\Desktop\\PadroesArquitetura\\PAS_Babylon\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Windows\\source\\repos\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj",
+        "projectUniqueName": "C:\\Users\\Windows\\Desktop\\PadroesArquitetura\\PAS_Babylon\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj",
         "projectName": "AvatarBabylon.Web",
-        "projectPath": "C:\\Users\\Windows\\source\\repos\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj",
+        "projectPath": "C:\\Users\\Windows\\Desktop\\PadroesArquitetura\\PAS_Babylon\\AvatarBabylon\\AvatarBabylon.Web\\AvatarBabylon.Web.csproj",
         "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Windows\\source\\repos\\AvatarBabylon\\AvatarBabylon.Web\\obj\\",
+        "outputPath": "C:\\Users\\Windows\\Desktop\\PadroesArquitetura\\PAS_Babylon\\AvatarBabylon\\AvatarBabylon.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,6 +38,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "RestSharp": {
+              "target": "Package",
+              "version": "[108.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
